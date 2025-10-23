@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo-list</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+        }
+        #btn {
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;   
+            background-color: #877b63;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-left: 250px;
+            box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.2)  ;
+        }
+        #btn:hover {
+            background-color: #356e60;
+        }
+        /* popup styles ----------------------------*/
+        #popup-container {   
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #popup-body {
+        background-color: #b7b99f;
+            padding: 20px;
+            box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.2);
+            
+            width: 300px;
+           
+        }
+        input,textarea {
+          
+            padding: 10px;
+            width: 300px;
+            box-sizing: border-box;
+            border: 1px solid #d3c4c4;
+            border-radius: 5px;
+             margin-bottom: 20px;
+        }
+        #sunmit-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;   
+            background-color: #dbd6ce;
+            color: rgb(195, 173, 173);
+            border-radius: 5px;
+           
+            box-shadow: 2px 2px 20px  rgba(29, 1, 1, 0.2)  ;
+            margin-left:100px;
+        }
+        #sunmit-btn:hover {
+            background-color: #356e60;
+           box-shadow: 0px 1px 5px rgb(221, 216, 226);
+        }
+        label {
+            font-weight: bold;
+            padding: 3px;
+           
+        }
+          
+
+
+    </style>
+</head>
+<body>
+    <button id="btn">Add person</button>
+   <table>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>DOB</th>
+        <th>Email</th>
+        <th>Comments</th>
+        <th>Actions</th>
+    </tr>
+     </table>
+<div id="popup-container">
+<div id="popup-body">
+    <form action="">
+      <label for="name">Name:</label>  <input type="text" id="name" placeholder="Name"  required ><br>
+      <label for="age">Age:</label>  <input type="number" id="age" placeholder="Age"  required ><br>
+      <label for="dob">DOB:</label>  <input type="date" id="dob" placeholder="DOB"  required ><br>
+      <label for="email">Email:</label>  <input type="email" id="email" placeholder="Email"  required ><br>
+      <label for="comments">Comments:</label>  <textarea id="comments" placeholder="Comments"  required ></textarea><br>
+        <button type="submit" id="sunmit-btn">Submit</button>   
+    </form>
+</div>
+   </div>
+
+   <script>
+
+    const form = document.querySelector('form');
+    const table = document.querySelector('table');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const age = document.getElementById('age').value;
+        const dob = document.getElementById('dob').value;
+        const email = document.getElementById('email').value;
+        const comments = document.getElementById('comments').value;
+
+        const newRow = table.insertRow();
+
+        newRow.innerHTML = `
+            <td>${name}</td>
+            <td>${age}</td>
+            <td>${dob}</td>
+            <td>${email}</td>
+            <td>${comments}</td>
+            <td><button class="delete-btn">Delete</button>
+                <button class="edit-btn">Edit</button>  </td>
+
+        `;
+        
+
+        form.reset();
+
+        const deleteBtn = newRow.querySelector('.delete-btn');
+        deleteBtn.addEventListener('click', function() {
+            table.deleteRow(newRow.rowIndex);
+        });
+        const editBtn = newRow.querySelector('.edit-btn');
+        editBtn.addEventListener('click', function() {  
+            document.getElementById('name').value = newRow.cells[0].innerText;
+            document.getElementById('age').value = newRow.cells[1].innerText;
+            document.getElementById('dob').value = newRow.cells[2].innerText;
+            document.getElementById('email').value = newRow.cells[3].innerText;
+            document.getElementById('comments').value = newRow.cells[4].innerText;
+
+            table.deleteRow(newRow.rowIndex);
+        }); 
+    }); 
+   </script>
+  
+</body>
+</html>
