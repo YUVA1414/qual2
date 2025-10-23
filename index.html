@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,7 @@
         body {
             background-color: rgb(248, 247, 246);
         }
-        /* login------------------------css */
+       
         #main-cont {
             display: flex;
             justify-content: center;
@@ -21,13 +22,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: rgb(215, 210, 201);
+            background-color: bisque;
             flex-direction: column;
             width: 400px;
             height: 500px;
-            box-shadow: 2px 2px 3px 1px rgb(150, 153, 153);
+            box-shadow: 2px 2px 3px 1px rgb(30, 46, 48);
             padding-top: 5px;
-           
         }
 
         #input-text,
@@ -46,6 +46,7 @@
             width: 100px;
             height: 40px;
             border-radius: 3px;
+            border: none;
             background-color: azure;
             font-family: serif;
             font-weight: bold;
@@ -53,18 +54,18 @@
         }
 
         #btn:hover {
-            background-color: rgb(203, 202, 195);
-          
+            background-color: rgb(171, 170, 151);
+            color: antiquewhite;
         }
 
         #create-account {
             cursor: pointer;
-            color: rgb(143, 143, 157);
+            color: rgb(65, 65, 134);
         }
 
         #forgot {
             cursor: pointer;
-            color: rgb(170, 170, 177);
+            color: rgb(65, 65, 134);
         }
 
         #forgot:hover,
@@ -76,7 +77,6 @@
             margin-left: 50px;
         }
 
-           
         #main-cont1 {
             display: flex;
             justify-content: center;
@@ -89,13 +89,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: rgb(126, 141, 144);
+            background-color: bisque;
             flex-direction: column;
             width: 400px;
             height: 500px;
-            box-shadow: 2px 2px 3px 1px rgb(136, 143, 144);
-            padding-top: 5px;
-           
         }
 
         #input-text1,
@@ -112,23 +109,21 @@
             width: 100px;
             height: 40px;
             border-radius: 3px;
-            
-           
-           
-            font-weight: bold;
+            border: none;
+            box-shadow: 1px 2px 2px 2px rgb(75, 38, 38);
+            background-color: rgb(44, 237, 237);
             margin-left: 50px;
         }
 
         #btn1:hover {
-            background-color: rgb(150, 147, 110);
-            color: rgb(134, 127, 117);
+            background-color: darkkhaki;
+            color: antiquewhite;
         }
 
         #sign-in1 {
             margin-left: 50px;
         }
 
-        /* forgot password  css---------------------------*/
         #main-cont3 {
             display: flex;
             justify-content: center;
@@ -141,13 +136,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: rgb(103, 104, 99);
+            background-color: bisque;
             flex-direction: column;
             width: 400px;
             height: 500px;
-            box-shadow: 2px 2px 3px 1px rgb(86, 221, 238);
-            padding-top: 5px;
-           
+         
         }
 
         #input-email,
@@ -165,22 +158,19 @@
             height: 40px;
             border-radius: 3px;
             border: none;
-            box-shadow: 1px 2px 2px 2px rgb(200, 169, 169);
-            background-color: rgb(105, 120, 120);
-            font-family: serif;
-            font-weight: bold;
-            margin-left: 50px;
+            
         }
 
         #btn3:hover {
-            background-color: rgb(135, 133, 102);
+            background-color: darkkhaki;
             color: antiquewhite;
         }
     </style>
 </head>
 
 <body id="bg">
-    <button id="popupBtn">click </button>
+    <button id="popupBtn">click me</button>
+
     <div id="main-cont">
         <div id="div-cont">
             <form id="loginForm">
@@ -196,7 +186,6 @@
         </div>
     </div>    
 
-   
     <div id="main-cont1">
         <div id="div-cont1">
             <form id="signinForm1">
@@ -205,12 +194,11 @@
                 <p id="errortext1"></p><br>
                 <input type="password" placeholder="enter password" id="input-password1" required onblur="validatePasswordsignup()">
                 <p id="errorpassword1"></p><br>
-               <br><br>
+                <input type="date" id="date1" required><br><br>
                 <input type="button" value="submit" id="btn1" onclick="handleSubmitsignup()">
             </form>
         </div>
     </div>
-
 
     <div id="main-cont3">
         <div id="div-cont3">
@@ -258,7 +246,204 @@
             mainCont3.style.display = 'flex';
         });
 
-       
+        function validateEmail() {
+            let email = input1.value;
+            if (email === "") {
+                errortext.innerText = "Email is required";
+                errortext.style.color = "red";
+                input1.style.borderColor = "red";
+            } else if (email.endsWith("@gmail.com")) {
+                errortext.innerText = "Valid";
+                errortext.style.color = "green";
+                input1.style.borderColor = "green";
+            } else {
+                errortext.innerText = "Only Gmail addresses allowed";
+                errortext.style.color = "red";
+                input1.style.borderColor = "red";
+            }
+        }
+
+        function validatePassword() {
+            let pwd = input2.value;
+            if (pwd === "") {
+                errorpassword.innerText = "Password is required";
+                errorpassword.style.color = "red";
+                input2.style.borderColor = "red";
+            } else if (pwd.length >= 8) {
+                errorpassword.innerText = "Valid";
+                errorpassword.style.color = "green";
+                input2.style.borderColor = "green";
+            } else {
+                errorpassword.innerText = "Password must be at least 8 characters";
+                errorpassword.style.color = "red";
+                input2.style.borderColor = "red";
+            }
+        }
+
+        function handleSubmit() {
+            let email = input1.value.trim();
+            let pwd = input2.value.trim();
+
+            if (!email.endsWith("@gmail.com") || pwd.length < 8) {
+                alert("Invalid email or password format");
+                return;
+            }
+
+            let storedUser = JSON.parse(localStorage.getItem(email));
+            if (storedUser && storedUser.password === pwd) {
+                alert("Sign-in successful!");
+                document.getElementById("loginForm").reset();
+            } else {
+                alert("Invalid user. Please sign up first.");
+            }
+        }
+
+        // ------------ Sign Up -----------------------------------------------------------------------------------
+        let input11 = document.getElementById("input-text1");
+        let input21 = document.getElementById("input-password1");
+        let errortext1 = document.getElementById("errortext1");
+        let errorpassword1 = document.getElementById("errorpassword1");
+
+        function validateEmailsignup() {
+            let email1 = input11.value;
+            if (email1 === "") {
+                errortext1.innerText = "Email is required";
+                errortext1.style.color = "red";
+                input11.style.borderColor = "red";
+            } else if (email1.endsWith("@gmail.com")) {
+                errortext1.innerText = "Valid";
+                errortext1.style.color = "green";
+                input11.style.borderColor = "green";
+            } else {
+                errortext1.innerText = "Only Gmail addresses allowed";
+                errortext1.style.color = "red";
+                input11.style.borderColor = "red";
+            }
+        }
+
+        function validatePasswordsignup() {
+            let pwd1 = input21.value.trim();
+            if (pwd1 === "") {
+                errorpassword1.innerText = "Password is required";
+                errorpassword1.style.color = "red";
+                input21.style.borderColor = "red";
+            } else if (pwd1.length >= 8) {
+                errorpassword1.innerText = "Valid";
+                errorpassword1.style.color = "green";
+                input21.style.borderColor = "green";
+            } else {
+                errorpassword1.innerText = "Password must be at least 8 characters";
+                errorpassword1.style.color = "red";
+                input21.style.borderColor = "red";
+            }
+        }
+
+        function handleSubmitsignup() {
+            let email1 = input11.value.trim();
+            let pwd1 = input21.value.trim();
+
+            if (!email1.endsWith("@gmail.com") || pwd1.length < 8) {
+                alert("Invalid email or please forgot the password format!");
+                return;
+            }
+
+            if (localStorage.getItem(email1)) {
+                alert("Email already exists Please log in.");
+                return;
+            }
+
+            let user = { email: email1, 
+                        password: pwd1
+             };
+            localStorage.setItem(email1, JSON.stringify(user));
+            alert("Signup successful");
+
+            mainCont1.style.display = 'none';
+            cont.style.display = 'flex';
+            document.getElementById("signinForm1").reset();
+            }
+        // ------------ Forgot Password --------------------------------------------------------------------------------
+        let inputemail = document.getElementById("input-email");
+        let inputpass = document.getElementById("pass");
+        let inputrepass = document.getElementById("createpass");
+
+        let errortextemail = document.getElementById("errortextemail");
+        let errortextpass = document.getElementById("errortextpass");
+        let errortextrepass = document.getElementById("errortextrepass");
+
+        function validateEmailpass() {
+            let emailpass = inputemail.value.trim();
+            if (emailpass === "" || !emailpass.endsWith("@gmail.com")) {
+                errortextemail.innerText = "Valid Gmail required";
+                errortextemail.style.color = "red";
+                return false;
+            } else {
+                errortextemail.innerText = "Valid";
+                errortextemail.style.color = "green";
+                return true;
+            }
+        }
+
+        function validatecrPassword() {
+            let pwdpass = inputpass.value.trim();
+            let repass = inputrepass.value.trim();
+            if (pwdpass === "" || pwdpass.length < 8) {
+                errortextpass.innerText = "Password must be at least 8 characters";
+                errortextpass.style.color = "red";
+                return false;
+            } else if (repass && pwdpass !== repass) {
+                errortextpass.innerText = "Passwords do not match";
+                errortextpass.style.color = "red";
+                return false;
+            } else {
+                errortextpass.innerText = "Valid";
+                errortextpass.style.color = "green";
+                return true;
+            }
+        }
+
+        function validaterePassword() {
+            let repass = inputrepass.value.trim();
+            let pwdpass = inputpass.value.trim();
+            if (repass === "" || repass.length < 8) {
+                errortextrepass.innerText = "Password must be at least 8 characters";
+                errortextrepass.style.color = "red";
+                return false;
+            } else if (repass !== pwdpass) {
+                errortextrepass.innerText = "Passwords do not match";
+                errortextrepass.style.color = "red";
+                return false;
+            } else {
+                errortextrepass.innerText = "Valid";
+                errortextrepass.style.color = "green";
+                return true;
+            }
+        }
+
+        function handleSubmitpass() {
+            let email = inputemail.value.trim();
+            let pwd = inputpass.value.trim();
+            let repwd = inputrepass.value.trim();
+
+            if (!validateEmailpass() || !validatecrPassword() || !validaterePassword()) {
+                alert(" validation errors");
+                return;
+            }
+
+            let user = JSON.parse(localStorage.getItem(email));
+            if (!user) {
+                alert("User not found Please sign up first.");
+                return;
+            }
+
+            user.password = pwd;
+            localStorage.setItem(email, JSON.stringify(user));
+            alert("Password updated successfully");
+
+            mainCont3.style.display = 'none';
+            cont.style.display = 'flex';
+            document.getElementById("signinForm3").reset();
+        }
     </script>
 </body>
 </html>
