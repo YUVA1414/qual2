@@ -9,8 +9,8 @@ h1 {
   color: #333;
 }
 #btn {
-  display: block;
-  margin: 20px auto;
+  margin-left: 1194px;
+  margin-bottom: 20px;
   padding: 10px 25px;
   background-color: #5e665e;
   color: white;
@@ -31,13 +31,18 @@ table {
   background-color: white;
   box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
 }
-th, td {
-  border: 1px solid #ccc;
+td{
+  border: 1px; solid #ccc;
   padding: 10px;
-  text-align: center;
+  text-align: left;
+  word-break: break-word;
 }
 th {
+  border: 1px solid #ccc;
+  padding: 10px;
   background-color: #b7b99f;
+  text-align: left;
+  word-wrap:break-word ;
 }
 .icon-btn {
   background: none;
@@ -120,4 +125,9 @@ input, textarea {
   display: none;
   margin-bottom: 10px;
   font-weight: bold;
+}
+#no-data {
+  text-align: center;
+  font-style: italic;
+  color: #666;
 }
